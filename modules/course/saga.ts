@@ -1,8 +1,8 @@
 import { put, takeLatest } from 'redux-saga/effects'
-import { fetchPlaylistError, fetchPlaylistSuccess, FETCH_PLAYLIST_REQUEST, PayloadAction } from './actions'
+import { fetchPlaylistError, fetchPlaylistSuccess, FETCH_PLAYLIST_REQUEST, PayloadAction, Playlist } from './actions'
 import ApiService from '@/services/ApiService'
 
-export function* fetchPlaylistSaga(action: PayloadAction<string>) {
+export function* fetchPlaylistSaga(action: PayloadAction<string>): Generator<any, void, any> {
   try {
     const playlistId = action.payload
     if (!playlistId) {
@@ -11,7 +11,7 @@ export function* fetchPlaylistSaga(action: PayloadAction<string>) {
     
     const api = new ApiService()
     const response: Response = yield api.getPlaylist(playlistId)
-    const data = yield response.json()
+    const data: any = yield response.json()
     const { playlist, playlistVideos } = data
     
     const formattedVideos = playlistVideos.map((video: any) => ({

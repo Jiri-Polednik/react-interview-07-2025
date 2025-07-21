@@ -1,17 +1,17 @@
 import React from 'react'
 import styles from './VideoFilter.module.scss'
 
-interface FilterOption {
-  onFilterSet: () => void
-  name: string
-  active: boolean
+interface Filter {
+  onFilterSet: () => void;
+  name: string;
+  active: boolean;
 }
 
-interface VideoFilterProps {
-  filters: FilterOption[]
+export interface VideoFilterProps {
+  filters: Filter[];
 }
 
-const VideoFilter: React.FC<VideoFilterProps> = ({ filters }) => {
+const VideoFilter = ({ filters }: VideoFilterProps) => {
   return (
     <div className={styles['video-filter']}>
       Filter:

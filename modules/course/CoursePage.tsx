@@ -3,8 +3,8 @@ import { VariableSizeList as List } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import Spinner from '@/components/Spinner/Spinner'
 import Container from '@/components/Container/Container'
-import Video from './components/Video/VideoContainer'
-import VideoFilter from './components/VideoFilter/VideoFilterContainer'
+import VideoContainer from './components/Video/VideoContainer'
+import VideoFilterContainer from './components/VideoFilter/VideoFilterContainer'
 import { Video as VideoType } from './actions'
 
 interface CoursePageProps {
@@ -29,7 +29,7 @@ class CoursePage extends React.PureComponent<CoursePageProps> {
   }
 
   toggleOpenCallback = (index: number): void => {
-    this.listRef.current.resetAfterIndex(index)
+    this.listRef.current?.resetAfterIndex(index)
   }
 
   render() {
@@ -37,15 +37,15 @@ class CoursePage extends React.PureComponent<CoursePageProps> {
     const Row = ({ index, style }: RowProps) => {
       return (
         <div style={style}>
-          <Video
-            key={playlistVideos[index].id}
-            index={index}
-            id={playlistVideos[index].id}
-            title={playlistVideos[index].title}
-            thumbnail={playlistVideos[index].thumbnail}
-            description={playlistVideos[index].description}
-            toggleOpenCallback={this.toggleOpenCallback}
-          />
+          {React.createElement(VideoContainer as React.ComponentType<any>, {
+            key: playlistVideos[index].id,
+            index: index,
+            id: playlistVideos[index].id,
+            title: playlistVideos[index].title,
+            thumbnail: playlistVideos[index].thumbnail,
+            description: playlistVideos[index].description,
+            toggleOpenCallback: this.toggleOpenCallback,
+          })}
         </div>
       )
     }
@@ -55,22 +55,21 @@ class CoursePage extends React.PureComponent<CoursePageProps> {
         {/*this.renderMeta()*/}
         <article>
           <Container>
-            <VideoFilter />
+            {React.createElement(VideoFilterContainer as React.ComponentType<any>)}
             <h1>{title}</h1>
             {!loading && playlistVideos.length > 0 && (
               <div style={{ height: '60vh' }}>
                 <AutoSizer>
-                  {({ height, width }) => (
-                    <List
-                      ref={this.listRef}
-                      height={height}
-                      itemCount={playlistVideos.length}
-                      itemSize={this.getItemSize}
-                      width={width}
-                    >
-                      {Row}
-                    </List>
-                  )}
+                  {({ height, width }) => 
+                    React.createElement(List as React.ComponentType<any>, {
+                      ref: this.listRef,
+                      height: height,
+                      itemCount: playlistVideos.length,
+                      itemSize: this.getItemSize,
+                      width: width,
+                      children: Row
+                    })
+                  }
                 </AutoSizer>
               </div>
             )}

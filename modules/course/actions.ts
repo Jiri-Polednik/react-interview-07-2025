@@ -22,7 +22,8 @@ export interface Video {
 
 export interface Playlist {
   title: string
-  videos: Video[]
+  videos?: Video[]
+  playlistVideos?: Video[]
 }
 
 export const fetchPlaylistRequest = (payload?: string): PayloadAction<string> => ({ type: FETCH_PLAYLIST_REQUEST, payload })

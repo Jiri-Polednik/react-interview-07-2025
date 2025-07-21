@@ -3,7 +3,12 @@ import c from "classnames";
 
 import styles from "./Collapse.module.scss";
 
-const Collapse = ({ open, children }) => {
+interface CollapseProps {
+  open: boolean;
+  children: React.ReactNode;
+}
+
+const Collapse = ({ open, children }: CollapseProps) => {
   return (
     <div
       className={c({

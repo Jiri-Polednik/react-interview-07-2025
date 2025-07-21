@@ -8,7 +8,7 @@ import fk2024p from "./fk-2024-p.json";
 import fk2024f from "./fk-2024-f.json";
 
 
-const mockData: Record<string, any> = {
+const mockData: Record<string, unknown> = {
   PLYPjPMiw3_YsVockWfuuhoP86YPDUXp4f: java,
   "UU8butISFwT-Wl7EV0hUK0BQ": freeCodeCamp,
   PLpcSpRrAaOaoIqHQddZOdbRrzr5dJtgSs: tenDaysOfJavascript,
