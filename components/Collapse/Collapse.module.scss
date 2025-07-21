@@ -1,8 +1,7 @@
 .collapse {
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-  }
-  .collapse--open {
-    transition: max-height 1s ease-in-out;
-  }
-  
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+.collapse--open {
+  transition: max-height 1s ease-in-out;
+}

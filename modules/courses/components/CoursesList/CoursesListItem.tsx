@@ -1,4 +1,4 @@
-import styles from "./CoursesListItem.module.scss";
+import styles from './CoursesListItem.module.scss';
 
 type Props = {
   slug: string;
@@ -6,7 +6,7 @@ type Props = {
 
 const CoursesListItem: React.FC<Props> = ({ slug }) => {
   return (
-    <li className={styles["courses-list-item"]}>
+    <li className={styles['courses-list-item']}>
       {slug}
       <button>remove course</button>
     </li>

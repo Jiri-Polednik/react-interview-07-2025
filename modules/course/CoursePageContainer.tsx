@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import { compose } from "recompose";
+'use client';
+import React from 'react';
+import { compose } from 'recompose';
 
-import CoursePage from "./CoursePage";
+import CoursePage from './CoursePage';
 
-import withPlaylistData from "./HOC/withPlaylistData";
-import fetchPlaylistOnMount from "./HOC/fetchPlaylistOnMount";
+import withPlaylistData from './HOC/withPlaylistData';
+import fetchPlaylistOnMount from './HOC/fetchPlaylistOnMount';
 
 const CoursePageWithData = compose(
   fetchPlaylistOnMount,

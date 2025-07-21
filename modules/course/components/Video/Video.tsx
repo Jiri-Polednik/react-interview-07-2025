@@ -1,7 +1,7 @@
-import React from 'react'
-import Collapse from '@/components/Collapse/Collapse'
-import styles from './Video.module.scss'
-import VideoPlayer from '../VideoPlayer/VideoPlayer'
+import React from 'react';
+import Collapse from '@/components/Collapse/Collapse';
+import styles from './Video.module.scss';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 interface VideoProps {
   video: any;
@@ -44,7 +44,10 @@ const Video = ({
             <h2 className={styles['video__title']}>{title}</h2>
             {isOpen && (
               <Collapse open={isOpen}>
-                <VideoPlayer url={`https://www.youtube.com/watch?v=${id}`} onMarkCompleted={toggleCompleted} />
+                <VideoPlayer
+                  url={`https://www.youtube.com/watch?v=${id}`}
+                  onMarkCompleted={toggleCompleted}
+                />
                 <p className={styles['video__description']}>{description}</p>
               </Collapse>
             )}
@@ -55,7 +58,7 @@ const Video = ({
         </div>
       }
     </>
-  )
-}
+  );
+};
 
-export default React.memo(Video)
+export default React.memo(Video);

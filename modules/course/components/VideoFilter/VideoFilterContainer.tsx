@@ -1,9 +1,9 @@
-import React from 'react'
-import VideoFilter from './VideoFilter'
-import { connect } from 'react-redux'
-import { compose, withProps } from 'recompose'
-import { videoFilterSelector } from '../../selectors'
-import { setVideoFilter } from '../../actions'
+import React from 'react';
+import VideoFilter from './VideoFilter';
+import { connect } from 'react-redux';
+import { compose, withProps } from 'recompose';
+import { videoFilterSelector } from '../../selectors';
+import { setVideoFilter } from '../../actions';
 
 interface FilterStateProps {
   videoFilter: string;
@@ -16,40 +16,42 @@ const withFilterState = connect(
   }),
   (dispatch: any) => ({
     setVideoFilter: (filterValue: string) => {
-      dispatch(setVideoFilter(filterValue))
+      dispatch(setVideoFilter(filterValue));
     },
-  }),
-)
+  })
+);
 
-const withFilters = withProps(({ setVideoFilter, videoFilter }: FilterStateProps) => {
-  return {
-    filters: [
-      {
-        onFilterSet: () => {
-          setVideoFilter('all')
+const withFilters = withProps(
+  ({ setVideoFilter, videoFilter }: FilterStateProps) => {
+    return {
+      filters: [
+        {
+          onFilterSet: () => {
+            setVideoFilter('all');
+          },
+          name: 'All',
+          active: videoFilter === 'all',
         },
-        name: 'All',
-        active: videoFilter === 'all',
-      },
-      {
-        onFilterSet: () => {
-          setVideoFilter('completed')
+        {
+          onFilterSet: () => {
+            setVideoFilter('completed');
+          },
+          name: 'Completed',
+          active: videoFilter === 'completed',
         },
-        name: 'Completed',
-        active: videoFilter === 'completed',
-      },
-      {
-        onFilterSet: () => {
-          setVideoFilter('not-completed')
+        {
+          onFilterSet: () => {
+            setVideoFilter('not-completed');
+          },
+          name: 'Not completed',
+          active: videoFilter === 'not-completed',
         },
-        name: 'Not completed',
-        active: videoFilter === 'not-completed',
-      },
-    ],
+      ],
+    };
   }
-})
+);
 
 export default compose(
   withFilterState,
-  withFilters,
-)(VideoFilter as any) as React.ComponentType<any>
+  withFilters
+)(VideoFilter as any) as React.ComponentType<any>;

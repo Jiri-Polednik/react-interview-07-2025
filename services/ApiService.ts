@@ -1,13 +1,13 @@
 export default class ApiService {
   private apiUrl: string;
   constructor() {
-    this.apiUrl = "/api";
+    this.apiUrl = '/api';
   }
   async getPlaylist(playlistId: string) {
     const request = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id: playlistId }),
     };
@@ -16,9 +16,9 @@ export default class ApiService {
   }
   async getSlug(id: string) {
     const request = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id }),
     };

@@ -1,4 +1,4 @@
-import CoursesListItem from "./CoursesListItem";
+import CoursesListItem from './CoursesListItem';
 
 const CoursesList: React.FC = () => {
   return (

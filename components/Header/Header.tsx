@@ -1,7 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
-import Container from '@/components/Container/Container'
-import styles from './Header.module.scss'
+import React from 'react';
+import Link from 'next/link';
+import Container from '@/components/Container/Container';
+import styles from './Header.module.scss';
 
 const Header = () => (
   <header className={styles.base}>
@@ -13,7 +13,9 @@ const Header = () => (
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/course/ten-days-of-javascript">10 days of JavaScript</Link>
+            <Link href="/course/ten-days-of-javascript">
+              10 days of JavaScript
+            </Link>
           </li>
           <li>
             <Link href="/course//java">Java</Link>
@@ -25,6 +27,6 @@ const Header = () => (
       </nav>
     </Container>
   </header>
-)
+);
 
-export default Header
+export default Header;

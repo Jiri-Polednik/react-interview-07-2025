@@ -29,9 +29,11 @@ Pro testování si tedy budeme muset vystačit s nimi.
 2. Potřebujeme rozběhat formulář na přidání nového seznamu videí a odebrání starých. Kolega už připravil UI komponenty, ale vytvoření state a jejich napojení už bude na tobě. Pro state management prosím použij redux store.
 
 ### Dodání
-* veřejně dostupný zdrojový kód, např. na GitHub
+
+- veřejně dostupný zdrojový kód, např. na GitHub
 
 ### Časový rozpočet
-* optimální je 80-120 minut
+
+- optimální je 80-120 minut
 
 Pokud ti cokoliv není jasné, tak se zeptej. Dotazy jsou vítány.
