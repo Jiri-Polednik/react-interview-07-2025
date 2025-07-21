@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import playlistsReducer from './reducer';
+import coursesReducer from '../courses/reducer';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 
@@ -17,6 +18,7 @@ export const makeStore = () => {
       getDefaultMiddleware().concat(sagaMiddleware),
     reducer: {
       coursePage: playlistsReducer,
+      courses: coursesReducer,
     },
   });
   sagaMiddleware.run(rootSaga);
