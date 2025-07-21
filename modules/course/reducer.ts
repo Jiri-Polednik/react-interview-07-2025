@@ -5,9 +5,19 @@ import {
   TOGGLE_VIDEO_COMPLETED,
   TOGGLE_VIDEO_OPEN,
   SET_VIDEO_FILTER,
+  PayloadAction,
+  Video,
 } from './actions'
 
-export const initialState = {
+export interface CoursePageState {
+  loading: boolean
+  error: boolean
+  playlistVideos: Video[]
+  title: string
+  filterValue: 'all' | 'completed' | 'not-completed'
+}
+
+export const initialState: CoursePageState = {
   loading: false,
   error: false,
   playlistVideos: [],
@@ -15,7 +25,7 @@ export const initialState = {
   filterValue: 'all',
 }
 
-function playlistReducer(state = initialState, action) {
+function playlistReducer(state = initialState, action: PayloadAction): CoursePageState {
   switch (action.type) {
     case FETCH_PLAYLIST_REQUEST:
       return { ...state, loading: true, error: false }
@@ -31,31 +41,31 @@ function playlistReducer(state = initialState, action) {
     case FETCH_PLAYLIST_ERROR:
       return { ...state, loading: false, error: true }
     case TOGGLE_VIDEO_COMPLETED: {
-      const { id } = action.payload
+      const id = action.payload
       return {
         ...state,
         playlistVideos: state.playlistVideos.map(video => {
           if (video.id === id) {
             return { ...video, completed: !video.completed }
           }
-          return {...video} // intentional error
+          return video
         }),
       }
     }
     case TOGGLE_VIDEO_OPEN: {
-      const { id } = action.payload
+      const id = action.payload
       return {
         ...state,
         playlistVideos: state.playlistVideos.map(video => {
           if (video.id === id) {
             return { ...video, open: !video.open }
           }
-          return {...video} // intentional error
+          return video
         }),
       }
     }
     case SET_VIDEO_FILTER:
-      const { filterValue } = action.payload
+      const filterValue = action.payload
       return { ...state, filterValue }
     default:
       return state

@@ -1,7 +1,20 @@
 import React from 'react'
-import Collapse from '@/components/Collapse'
+import Collapse from '@/components/Collapse/Collapse'
 import styles from './Video.module.scss'
 import VideoPlayer from '../VideoPlayer/VideoPlayer'
+
+interface VideoProps {
+  video: any;
+  toggleCompleted: () => void;
+  isCompleted: boolean;
+  toggleOpen: () => void;
+  isOpen: boolean;
+  isDisplayed: boolean;
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+}
 
 const Video = ({
   video,
@@ -14,7 +27,7 @@ const Video = ({
   title,
   description,
   thumbnail,
-}) => {
+}: VideoProps) => {
   return (
     <>
       {
@@ -23,7 +36,7 @@ const Video = ({
             <input
               className={styles['video__completed-checkbox']}
               type="checkbox"
-              checked={isCompleted ? 1 : 0}
+              checked={isCompleted}
               onChange={toggleCompleted}
             />
           </label>

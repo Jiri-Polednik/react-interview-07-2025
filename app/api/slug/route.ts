@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 import { NextResponse } from "next/server";
 
-const mockData: Record<string, any> = {
+const mockData: Record<string, string> = {
   PLYPjPMiw3_YsVockWfuuhoP86YPDUXp4f: "java",
   "UU8butISFwT-Wl7EV0hUK0BQ": "free-code-camp",
   PLpcSpRrAaOaoIqHQddZOdbRrzr5dJtgSs: "ten-days-of-javascript",

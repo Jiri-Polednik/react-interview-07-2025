@@ -1,7 +1,17 @@
 import React from 'react'
 import styles from './VideoFilter.module.scss'
 
-const VideoFilter = ({ filters }) => {
+interface Filter {
+  onFilterSet: () => void;
+  name: string;
+  active: boolean;
+}
+
+export interface VideoFilterProps {
+  filters: Filter[];
+}
+
+const VideoFilter = ({ filters }: VideoFilterProps) => {
   return (
     <div className={styles['video-filter']}>
       Filter:

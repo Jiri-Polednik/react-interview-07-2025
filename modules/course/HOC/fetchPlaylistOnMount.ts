@@ -2,15 +2,19 @@ import { compose, lifecycle } from 'recompose'
 import { connect } from 'react-redux'
 import { fetchPlaylistRequest } from '../actions'
 
+interface OwnProps {
+  playlistId: string;
+}
+
 const withFetchPlaylistRequest = connect(
   null,
-  (dispatch, { playlistId }) => {
+  (dispatch: any, { playlistId }: OwnProps) => {
     if (!playlistId) {
       throw Error('Missing playlist id in props')
     }
     return {
       fetchPlaylistRequest: () => {
-        dispatch(fetchPlaylistRequest({playlistId}))
+        dispatch(fetchPlaylistRequest(playlistId))
       },
     }
   },
@@ -18,7 +22,7 @@ const withFetchPlaylistRequest = connect(
 
 const fetchPlaylistOnMount = lifecycle({
   componentDidMount() {
-    this.props.fetchPlaylistRequest()
+    (this.props as any).fetchPlaylistRequest()
   },
 })
 
