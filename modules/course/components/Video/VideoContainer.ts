@@ -10,7 +10,7 @@ const withCompleted = connect(
   }),
   (dispatch, { id, toggleOpenCallback, index }) => ({
     toggleCompleted: () => {
-      dispatch(toggleVideoCompleted({ id }))
+      dispatch(toggleVideoCompleted(id))
       toggleOpenCallback(index)
     },
   }),
@@ -22,7 +22,7 @@ const withOpen = connect(
   }),
   (dispatch, { id, toggleOpenCallback, index }) => ({
     toggleOpen: () => {
-      dispatch(toggleVideoOpen({ id }))
+      dispatch(toggleVideoOpen(id))
       toggleOpenCallback(index)
     },
   }),

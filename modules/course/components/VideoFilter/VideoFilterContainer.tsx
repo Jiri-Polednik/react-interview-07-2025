@@ -20,21 +20,21 @@ const withFilters = withProps(({ setVideoFilter, videoFilter }) => {
     filters: [
       {
         onFilterSet: () => {
-          setVideoFilter({ filterValue: 'all' })
+          setVideoFilter('all')
         },
         name: 'All',
         active: videoFilter === 'all',
       },
       {
         onFilterSet: () => {
-          setVideoFilter({ filterValue: 'completed' })
+          setVideoFilter('completed')
         },
         name: 'Completed',
         active: videoFilter === 'completed',
       },
       {
         onFilterSet: () => {
-          setVideoFilter({ filterValue: 'not-completed' })
+          setVideoFilter('not-completed')
         },
         name: 'Not completed',
         active: videoFilter === 'not-completed',

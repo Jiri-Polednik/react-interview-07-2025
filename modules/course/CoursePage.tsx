@@ -1,27 +1,40 @@
 import React from 'react'
 import { VariableSizeList as List } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
-import Spinner from '@/components/Spinner'
-import Container from '@/components/Container'
-import Video from './components/Video'
-import VideoFilter from './components/VideoFilter'
+import Spinner from '@/components/Spinner/Spinner'
+import Container from '@/components/Container/Container'
+import Video from './components/Video/VideoContainer'
+import VideoFilter from './components/VideoFilter/VideoFilterContainer'
+import { Video as VideoType } from './actions'
 
-class CoursePage extends React.PureComponent {
-  listRef = React.createRef()
+interface CoursePageProps {
+  title: string
+  loading: boolean
+  error: string | null
+  playlistVideos: VideoType[]
+}
+
+interface RowProps {
+  index: number
+  style: React.CSSProperties
+}
+
+class CoursePage extends React.PureComponent<CoursePageProps> {
+  listRef = React.createRef<List>()
 
 
-  getItemSize = index => {
+  getItemSize = (index: number): number => {
     const { playlistVideos } = this.props
     return playlistVideos[index].open === true ? 540 : 140
   }
 
-  toggleOpenCallback = index => {
+  toggleOpenCallback = (index: number): void => {
     this.listRef.current.resetAfterIndex(index)
   }
 
   render() {
     const { title, loading, error, playlistVideos } = this.props
-    const Row = ({ index, style, toggleOpenCallback }) => {
+    const Row = ({ index, style }: RowProps) => {
       return (
         <div style={style}>
           <Video

@@ -1,5 +1,5 @@
 import React from 'react'
-import Collapse from '@/components/Collapse'
+import Collapse from '@/components/Collapse/Collapse'
 import styles from './Video.module.scss'
 import VideoPlayer from '../VideoPlayer/VideoPlayer'
 

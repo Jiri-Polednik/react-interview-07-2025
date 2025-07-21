@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Container from '@/components/Container'
+import Container from '@/components/Container/Container'
 import styles from './Header.module.scss'
 
 const Header = () => (
