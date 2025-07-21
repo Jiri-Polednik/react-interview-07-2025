@@ -1,4 +1,4 @@
-import CoursesPage from "@/modules/courses/CoursesPage";
+import CoursesPage from '@/modules/courses/CoursesPage';
 
 export default function Home() {
   return (

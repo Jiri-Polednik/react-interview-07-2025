@@ -1,7 +1,7 @@
-import * as React from "react";
-import c from "classnames";
+import * as React from 'react';
+import c from 'classnames';
 
-import styles from "./Collapse.module.scss";
+import styles from './Collapse.module.scss';
 
 interface CollapseProps {
   open: boolean;
@@ -12,10 +12,10 @@ const Collapse = ({ open, children }: CollapseProps) => {
   return (
     <div
       className={c({
-        [styles["collapse"]]: true,
-        [styles["collapse--open"]]: open,
+        [styles['collapse']]: true,
+        [styles['collapse--open']]: open,
       })}
-      style={{ maxHeight: open ? "1000000px" : "0px" }}
+      style={{ maxHeight: open ? '1000000px' : '0px' }}
     >
       {children}
     </div>

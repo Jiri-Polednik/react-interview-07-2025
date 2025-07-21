@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './VideoFilter.module.scss'
+import React from 'react';
+import styles from './VideoFilter.module.scss';
 
 interface Filter {
   onFilterSet: () => void;
@@ -27,10 +27,10 @@ const VideoFilter = ({ filters }: VideoFilterProps) => {
           >
             {name}
           </button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default VideoFilter
+export default VideoFilter;

@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Container.module.scss'
+import React from 'react';
+import styles from './Container.module.scss';
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -7,6 +7,6 @@ interface ContainerProps {
 
 const Container = ({ children }: ContainerProps) => (
   <div className={styles.base}>{children}</div>
-)
+);
 
-export default Container
+export default Container;
