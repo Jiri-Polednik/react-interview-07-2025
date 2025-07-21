@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "tsc --noEmit && next lint"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "tsc --noEmit && next lint && prettier --check ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
@@ -36,6 +38,8 @@
     "@types/recompose": "^0.30.15",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.1.4",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
     "typescript": "^5"
   },
   "engines": {
