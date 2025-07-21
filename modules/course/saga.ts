@@ -19,14 +19,30 @@ export function* fetchPlaylistSaga(
 
     const api = new ApiService();
     const response: Response = yield api.getPlaylist(playlistId);
+
+    if (!response.ok) {
+      const errorData: any = yield response.json();
+      throw new Error(
+        errorData.message || `HTTP ${response.status}: Failed to fetch playlist`
+      );
+    }
+
     const data: any = yield response.json();
     const { playlist, playlistVideos } = data;
+
+    if (!playlist || !playlist.localized) {
+      throw new Error('Invalid playlist data: missing playlist information');
+    }
+
+    if (!Array.isArray(playlistVideos)) {
+      throw new Error('Invalid playlist data: no videos found');
+    }
 
     const formattedVideos = playlistVideos.map((video: any) => ({
       id: video.id,
       title: video.title,
-      thumbnail: video.thumbnails.medium.url,
-      description: video.description,
+      thumbnail: video.thumbnails?.medium?.url || '',
+      description: video.description || '',
     }));
 
     yield put(
@@ -36,10 +52,12 @@ export function* fetchPlaylistSaga(
       })
     );
   } catch (err) {
-    console.error(err);
+    console.error('Playlist fetch error:', err);
     yield put(
       fetchPlaylistError(
-        err instanceof Error ? err.message : 'An error occurred'
+        err instanceof Error
+          ? err.message
+          : 'An error occurred while fetching the playlist'
       )
     );
   }

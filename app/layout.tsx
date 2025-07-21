@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout/Layout';
+import StoreProvider from './StoreProvider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <Layout>{children}</Layout>
+        <StoreProvider>
+          <Layout>{children}</Layout>
+        </StoreProvider>
       </body>
     </html>
   );
